@@ -53,7 +53,7 @@ During a 24-hour period in our insecure environment, we gathered the following m
 
 These metrics reflect the data we collected while exploring the vulnerable environment over the span of a day.
 
-## Attack Maps Before Hardening / Security Controls
+## Attack Maps After Hardening / Security Controls
 
 ```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
 
