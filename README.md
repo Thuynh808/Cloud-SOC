@@ -44,6 +44,7 @@ enabling the creation of visualizations that effectively illustrated the cyber t
 
 ## Attack Maps Before Hardening / Security Controls
 ![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/XjOmjl9.jpg)<br> <br>
+ - <br>The attack map highlights the risks of leaving the Network Security Group (NSG) open, stressing the importance of implementing proper security measures, such as restricting NSG rules, to minimize threats.
 ![Windows RDP/SMB Auth Failures](https://i.imgur.com/V5r4Vst.jpg)<br> <br>
 ![Linux Syslog Auth Failures](https://i.imgur.com/KEMHHmO.jpg) <br>
 
