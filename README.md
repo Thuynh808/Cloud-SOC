@@ -39,13 +39,15 @@ In contrast, for the "AFTER" metrics, substantial security enhancements were imp
 
 - <b>Private Endpoints</b>: I improved security by replacing public endpoints with Private Endpoints for Azure resources. This restricted access to sensitive resources, protecting them from unauthorized access and potential threats.<br> 
 
-> <b>NOTE:The attack maps were used for geolocation as well, allowing visualization of the geographic origin of cyber threats. This information helped identify regions requiring heightened security measures and proactive defense strategies.</b>
-
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/XjOmjl9.jpg)<br> 
-- The attack map highlights the risks of leaving the Network Security Group (NSG) open, stressing the importance of implementing proper security measures, such as restricting NSG rules, to minimize threats. <br>
+> <b>NOTE:The attack maps were generated from a workbook using pre-built KQL .JSON map files, which also included geolocation data. These files provided structured representations of attack patterns and their data, allowing visualizations to illustrate cyber threats' geographic distribution and their impact on the system.</b>
+
+![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/XjOmjl9.jpg)
+- The attack map highlights the risks of leaving the Network Security Group (NSG) open, stressing the importance of implementing proper security measures, such as restricting NSG rules, to minimize threats. <br><br>
 ![Windows RDP/SMB Auth Failures](https://i.imgur.com/V5r4Vst.jpg)<br> <br>
-![Linux Syslog Auth Failures](https://i.imgur.com/KEMHHmO.jpg) <br>
+- The attack map shows numerous RDP and SMB failures, emphasizing the need to secure remote access and file sharing services against potential cyber threats. <br> <br>
+![Linux Syslog Auth Failures](https://i.imgur.com/KEMHHmO.jpg) <br> <br>
+- The attack map shows syslog authentication failures on the Linux server, underscoring the importance of securing it with strong authentication and vigilant log monitoring. <br> <br>
 
 ## Metrics Before Hardening / Security Controls
 
@@ -87,73 +89,6 @@ Below is the information detailing the metrics obtained from our environment for
 
 Throughout this project, we successfully built a mini honeynet in Microsoft Azure and seamlessly integrated log sources into a Log Analytics workspace. Employing Microsoft Sentinel allowed us to promptly activate alerts and generate incidents based on the collected logs. We meticulously assessed the metrics within the insecure environment prior to implementing security controls, and then once more after applying the necessary measures. The results showcased a remarkable reduction in security events and incidents following the implementation of these security controls, affirming their effectiveness.
 
-It is essential to recognize that if the network resources were extensively used by regular users, it is plausible that more security events and alerts might have been triggered during the 24-hour period following the security control implementation.<br>
-
-
- 
-- <b>This attack map demonstrates the consequences of leaving the Network Security Group (NSG) open, as it allowed for malicious traffic to flow unimpeded. This visualization underscores the importance of implementing proper security measures, such as restricting NSG rules, to prevent unauthorized access and minimize potential threats.</b>
-
-
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/JeElX9R.png)<br>
-
- <br />
- <br />
- 
- - <b>This attack map highlights the numerous syslog authentication failures experienced by the Linux server I deployed, indicating that unauthorized access attempts were made from outisde. This serves as a reminder of the importance of securing Linux servers with strong authentication mechanisms and monitoring system logs for signs of intrusion attempts.</b>
- 
-![Linux Syslog Auth Failures](https://i.imgur.com/QW8PF0o.png)<br>
-
- <br />
- <br />
- 
- - <b>This attack map showcases numerous RDP and SMB failures, illustrating the persistent attempts by potential attackers to exploit these protocols. The visualization emphasizes the need for securing remote access and file sharing services to protect against unauthorized access and potential cyber threats.</b>
- 
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/SETmQBl.png)<br>
-
- <br />
- <br />
-
-## Attack Maps After Hardening / Security Controls
-
-> All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.
-
- <br />
- <br />
- 
-## Metrics Before Hardening / Security Controls
-
-The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-05-02 17:02:00 PM
-Stop Time 2023-05-03 17:02:00 PM
-
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent (Windows VM)            | 21182
-| Syslog (Linux VM)                   | 4877
-| SecurityAlert (Microsoft Defender for Cloud            | 0
-| SecurityIncident (Sentinel Incidents)        | 343
-| NSG Inbound Malicious Flows Allowed | 969
-
-
-
-## Metrics After Hardening / Security Controls
-
-The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
-
-
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent (Windows VM)            | 783
-| Syslog (Linux VM)                   | 23
-| SecurityAlert (Microsoft Defender for Cloud            | 0
-| SecurityIncident (Sentinel Incidents)        | 0
-| NSG Inbound Malicious Flows Allowed | 0
-
-## Conclusion
-
-In conclusion, I set up a compact, but effective honeynet using Microsoft Azure's robust cloud infrastructure. Microsoft Sentinel was then utilized to trigger alerts and generate incidents based on the logs ingested from the implemented watch lists. Baseline metrics were recorded in the unprotected environment before the implementation of any security controls. Following this, a range of security measures were enforced to fortify the network against potential threats. Upon implementation of these controls, another set of measurements was taken.
 
 The comparison of pre- and post-implementation metrics demonstrated a significant reduction in security events and incidents, which highlights the effectiveness of the enforced security controls.
 It's important to mention that if the network's resources were extensively engaged by regular users, it's plausible that a higher number of security events and alerts could have been produced within the 24-hour timeframe post-security control implementation.
